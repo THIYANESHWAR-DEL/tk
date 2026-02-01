@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Files – TK Office Manager v5</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+</head>
+
+<body onload="checkLogin(); loadFiles();">
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <div class="sidebar-title">TK Office Manager</div>
+
+    <a href="dashboard.html" class="side-link">🏠 Dashboard</a>
+    <a href="clients.html" class="side-link">👥 Clients</a>
+    <a href="works.html" class="side-link">📌 Works</a>
+    <a href="accounts.html" class="side-link">💰 Accounts</a>
+    <a href="files.html" class="side-link active">📁 Files</a>
+    <a href="settings.html" class="side-link">⚙ Settings</a>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <!-- GLOBAL SEARCH -->
+    <div class="top-search">
+        <input type="text" id="globalSearch" placeholder="Search anything…" oninput="globalSearch()">
+        <div id="globalSearchResults" class="search-dropdown"></div>
+    </div>
+
+    <h1>Physical File Register</h1>
+
+    <!-- ADD FILE -->
+    <div class="form-card">
+        <h2>Add New File</h2>
+
+        <div class="form-row">
+            <input class="input" id="file_number" placeholder="Auto File No (F-001)" disabled>
+        </div>
+
+        <!-- SEARCH CLIENT -->
+        <div class="search-box">
+            <input class="input" id="file_client" placeholder="Search Client…" oninput="fileClientSearch(this.value)">
+            <div id="fileClientResults" class="search-dropdown"></div>
+        </div>
+
+        <div class="form-row">
+            <input class="input" id="file_service" placeholder="Service Type (GST / ITR / Accounts / Loan)">
+        </div>
+
+        <div class="form-row">
+            <input class="input" id="file_location" placeholder="Location (Rack-Shelf-Box)">
+        </div>
+
+        <div class="form-row">
+            <select class="input" id="file_status">
+                <option>In Office</option>
+                <option>Given to Client</option>
+                <option>With Staff</option>
+                <option>Completed</option>
+                <option>Missing</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <input class="input" id="file_note" placeholder="Notes (optional)">
+        </div>
+
+        <button class="btn" onclick="addFile_v5()">Save File</button>
+    </div>
+
+    <!-- FILE LIST -->
+    <h2 style="margin-top:25px;">File List</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>File No</th>
+                <th>Client</th>
+                <th>Service</th>
+                <th>Location</th>
+                <th>Status</th>
+                <th>Note</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="fileList"></tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

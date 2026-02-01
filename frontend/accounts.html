@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Accounts – TK Office Manager v5</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+</head>
+
+<body onload="checkLogin(); loadAccounts();">
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <div class="sidebar-title">TK Office Manager</div>
+
+    <a href="dashboard.html" class="side-link">🏠 Dashboard</a>
+    <a href="clients.html" class="side-link">👥 Clients</a>
+    <a href="works.html" class="side-link">📌 Works</a>
+    <a href="accounts.html" class="side-link active">💰 Accounts</a>
+    <a href="files.html" class="side-link">📁 Files</a>
+    <a href="settings.html" class="side-link">⚙ Settings</a>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <!-- GLOBAL SEARCH -->
+    <div class="top-search">
+        <input type="text" id="globalSearch" placeholder="Search anything…" oninput="globalSearch()">
+        <div id="globalSearchResults" class="search-dropdown"></div>
+    </div>
+
+    <h1>Accounts</h1>
+
+    <!-- FEES RECEIVED -->
+    <div class="form-card">
+        <h2>Fees Received</h2>
+
+        <div class="search-box">
+            <input class="input" id="fee_client" placeholder="Search Client…" oninput="feeClientSearch(this.value)">
+            <div id="feeClientResults" class="search-dropdown"></div>
+        </div>
+
+        <div class="form-row">
+            <input type="number" class="input" id="fee_amount" placeholder="Amount (₹)">
+            <select class="input" id="fee_worktype">
+                <option value="">Work Type</option>
+                <option>GST</option>
+                <option>ITR</option>
+                <option>Accounts</option>
+                <option>Bank</option>
+                <option>Others</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <input type="date" class="input" id="fee_date">
+        </div>
+
+        <div class="form-row">
+            <input class="input" id="fee_note" placeholder="Note (optional)">
+        </div>
+
+        <button class="btn" onclick="addFee_v5()">Add Fee</button>
+    </div>
+
+    <!-- EXPENSES -->
+    <div class="form-card">
+        <h2>Expenses</h2>
+
+        <div class="form-row">
+            <select class="input" id="exp_type">
+                <option value="">Expense Type</option>
+                <option>Office Rent</option>
+                <option>EB Bill</option>
+                <option>Internet</option>
+                <option>Mobile Recharge</option>
+                <option>Fuel</option>
+                <option>Stationary</option>
+                <option>Staff Salary</option>
+                <option>Misc / Others</option>
+            </select>
+
+            <input type="number" class="input" id="exp_amount" placeholder="Amount (₹)">
+        </div>
+
+        <div class="form-row">
+            <input type="date" class="input" id="exp_date">
+            <input class="input" id="exp_note" placeholder="Note (optional)">
+        </div>
+
+        <button class="btn red-btn" onclick="addExpense_v5()">Add Expense</button>
+    </div>
+
+    <!-- CASHBOOK -->
+    <h2 style="margin-top:30px;">Cashbook</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Particular</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody id="cashbookList"></tbody>
+    </table>
+
+    <!-- MONTHLY SUMMARY -->
+    <h2 style="margin-top:30px;">Monthly Summary</h2>
+
+    <div class="dashboard-row">
+
+        <div class="dash-card green">
+            <div class="dash-number" id="sum_fee">₹0</div>
+            <div class="dash-label">Total Fees Received</div>
+        </div>
+
+        <div class="dash-card red">
+            <div class="dash-number" id="sum_exp">₹0</div>
+            <div class="dash-label">Total Expenses</div>
+        </div>
+
+        <div class="dash-card blue">
+            <div class="dash-number" id="sum_profit">₹0</div>
+            <div class="dash-label">Profit</div>
+        </div>
+
+    </div>
+
+    <button class="btn" onclick="exportAccountsCSV()">Export CSV</button>
+
+</div>
+
+</body>
+</html>

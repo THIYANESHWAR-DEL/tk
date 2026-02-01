@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Settings – TK Office Manager v5</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+</head>
+
+<body onload="checkLogin();">
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <div class="sidebar-title">TK Office Manager</div>
+
+    <a href="dashboard.html" class="side-link">🏠 Dashboard</a>
+    <a href="clients.html" class="side-link">👥 Clients</a>
+    <a href="works.html" class="side-link">📌 Works</a>
+    <a href="accounts.html" class="side-link">💰 Accounts</a>
+    <a href="files.html" class="side-link">📁 Files</a>
+    <a href="settings.html" class="side-link active">⚙ Settings</a>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <!-- GLOBAL SEARCH -->
+    <div class="top-search">
+        <input type="text" id="globalSearch" placeholder="Search anything…" oninput="globalSearch()">
+        <div id="globalSearchResults" class="search-dropdown"></div>
+    </div>
+
+    <h1>Settings</h1>
+
+    <!-- BACKUP -->
+    <div class="form-card">
+        <h2>Backup Data</h2>
+        <button class="btn" onclick="downloadBackup_v5()">Download Backup (.json)</button>
+    </div>
+
+    <!-- RESTORE -->
+    <div class="form-card">
+        <h2>Restore Backup</h2>
+        <input type="file" id="restore_file" accept=".json">
+        <button class="btn red-btn" onclick="restoreBackup_v5()">Restore Backup</button>
+    </div>
+
+    <!-- ABOUT -->
+    <div class="form-card">
+        <h2>Application Information</h2>
+
+        <p><strong>Software:</strong> TK Office Manager v5</p>
+        <p><strong>Developer:</strong> ChatGPT (AI) + Thirumalaikumar</p>
+        <p><strong>Version:</strong> 5.0</p>
+        <p><strong>Type:</strong> Offline HTML Application</p>
+        <p><strong>Password:</strong> admin / tk1234 (fixed; cannot change)</p>
+    </div>
+
+</div>
+
+</body>
+</html>

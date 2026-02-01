@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Works – TK Office Manager v5</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+</head>
+
+<body onload="checkLogin(); loadWorks();">
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <div class="sidebar-title">TK Office Manager</div>
+
+    <a href="dashboard.html" class="side-link">🏠 Dashboard</a>
+    <a href="clients.html" class="side-link">👥 Clients</a>
+    <a href="works.html" class="side-link active">📌 Works</a>
+    <a href="accounts.html" class="side-link">💰 Accounts</a>
+    <a href="files.html" class="side-link">📁 Files</a>
+    <a href="settings.html" class="side-link">⚙ Settings</a>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <!-- GLOBAL SEARCH -->
+    <div class="top-search">
+        <input type="text" id="globalSearch" placeholder="Search anything…" oninput="globalSearch()">
+        <div id="globalSearchResults" class="search-dropdown"></div>
+    </div>
+
+    <h1>Works</h1>
+
+    <!-- AUTO GST GENERATOR BUTTON -->
+    <div class="form-card" style="background:#e8f1ff;">
+        <h2>Auto GST Work Generate</h2>
+
+        <div class="form-row">
+            <label>Select Month:</label>
+            <input type="month" id="gst_month" class="input">
+        </div>
+
+        <button class="btn" onclick="autoGST_generate()">Generate GSTR-1 & GSTR-3B</button>
+    </div>
+
+    <!-- ADD WORK -->
+    <div class="form-card">
+        <h2>Add Work</h2>
+
+        <!-- SEARCH CLIENT -->
+        <div class="search-box">
+            <input class="input" id="w_client" placeholder="Type Client Name…" oninput="workClientSearch(this.value)">
+            <div id="workClientResults" class="search-dropdown"></div>
+        </div>
+
+        <div class="form-row">
+            <input class="input" id="w_title" placeholder="Work Title (Optional)">
+            <select class="input" id="w_service">
+                <option value="">Select Service</option>
+                <option>GST Registration</option>
+                <option>GSTR-1 Filing</option>
+                <option>GSTR-3B Filing</option>
+                <option>GST Amendment</option>
+                <option>GST Notice Reply</option>
+                <option>GST Reconciliation</option>
+                <option>ITR Filing</option>
+                <option>Prepare Balance Sheet</option>
+                <option>Prepare Winman Data</option>
+                <option>AIS Reconciliation</option>
+                <option>Monthly Accounting</option>
+                <option>Yearly Accounting</option>
+                <option>Udyam Registration</option>
+                <option>Project Report (Term Loan)</option>
+                <option>Provisional Report (Working Capital)</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <label>Due Date:</label>
+            <input type="date" id="w_deadline" class="input">
+        </div>
+
+        <div class="form-row">
+            <input class="input" id="w_notes" placeholder="Notes (Optional)" style="width: 100%;">
+        </div>
+
+        <button class="btn" onclick="addWork_v5()">Add Work</button>
+    </div>
+
+    <h2 style="margin-top:25px;">Pending Works</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Client</th>
+                <th>Service</th>
+                <th>Due</th>
+                <th>Status</th>
+                <th>Fee</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="pendingWorks"></tbody>
+    </table>
+
+    <h2 style="margin-top:32px;">Completed Works</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Client</th>
+                <th>Service</th>
+                <th>Completed</th>
+                <th>Fee</th>
+            </tr>
+        </thead>
+        <tbody id="completedWorks"></tbody>
+    </table>
+
+</div>
+
+</body>
+</html>
